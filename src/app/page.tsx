@@ -338,90 +338,365 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. Phase IV: Proposed Partnership (The Pitch) */}
-      <section id="proposal" className="relative py-40 px-6 z-10 overflow-hidden">
-        {/* Massive background glow */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/20 rounded-full blur-[150px] pointer-events-none" />
+      {/* 6. Phase IV: Brand Development & Growth Proposal */}
+      <section id="proposal" className="relative py-32 md:py-40 px-6 z-10 overflow-hidden">
+        {/* Background glow */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-secondary/10 rounded-full blur-[150px] pointer-events-none" />
 
-        <div className="max-w-5xl mx-auto relative z-10">
+        <div className="max-w-4xl mx-auto relative z-10">
+          {/* Proposal Header */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariant}
-            className="text-center mb-16"
+            className="text-center mb-20"
           >
             <span className="text-secondary font-bold tracking-widest uppercase text-sm block mb-4">Phase IV</span>
-            <h2 className="font-heading text-5xl md:text-7xl font-bold text-white">The Partnership</h2>
+            <h2 className="font-heading text-4xl md:text-6xl font-bold text-white mb-8">Brand Development & Growth Proposal</h2>
+            <p className="text-white/60 text-lg font-light">for Hair For You / Magic Coils</p>
+            <div className="mt-8 flex flex-wrap justify-center gap-8 text-sm">
+              <span className="text-white/50">Prepared for <strong className="text-white">Antwun</strong>, Hair For You / Magic Coils</span>
+              <span className="text-white/50">Prepared by <strong className="text-secondary">Couture House</strong></span>
+              <span className="text-white/50">March 17, 2026</span>
+            </div>
+            <p className="mt-4 text-white/40 text-sm">hello@couturehouse.co</p>
           </motion.div>
 
+          {/* Executive Summary */}
           <motion.div 
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={fadeUpVariant}
-            className="relative p-[1px] rounded-[2.5rem] overflow-hidden"
+            className="mb-16"
           >
-            {/* Animated rotating border */}
-            <motion.div 
-              animate={{ rotate: 360 }}
-              transition={{ duration: 8, repeat: Infinity, ease: "linear" }}
-              className="absolute inset-[-50%] bg-[conic-gradient(from_0deg,transparent_0_340deg,var(--color-secondary)_360deg)] opacity-50"
-            />
-            
-            <div className="relative bg-black/80 backdrop-blur-2xl rounded-[2.4rem] p-10 md:p-16 border border-white/10">
-              <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-12 gap-8">
-                <div>
-                  <Image 
-                    src="/magic-coils-logo-transparent.png" 
-                    alt="Magic Coils" 
-                    width={200} 
-                    height={80} 
-                    className="mb-6"
-                  />
-                  <p className="text-secondary font-bold tracking-widest uppercase text-sm">
-                    The E-Commerce & Content Engine
-                  </p>
-                </div>
-                <div className="text-left md:text-right">
-                  <span className="text-6xl font-bold text-white font-heading block mb-2">$[PRICE]</span>
-                  <span className="text-white/50 uppercase tracking-widest text-sm font-bold">/ month retainer</span>
-                </div>
-              </div>
+            <h3 className="font-heading text-2xl font-bold text-secondary mb-6 uppercase tracking-wider">Executive Summary</h3>
+            <p className="text-white/80 leading-relaxed text-lg">
+              Magic Coils has the foundation of a premium textured-hair brand: a polished visual identity, a clear product story, and strong creative potential for social-first growth. Couture House proposes a focused partnership that combines a launch-ready online store with daily content creation and digital growth support designed to build awareness and drive product sales.
+            </p>
+            <p className="text-white/80 leading-relaxed text-lg mt-6">
+              This proposal is structured to support both direct-to-consumer online sales and long-term trust with stylists, salons, and beauty-conscious customers by creating a consistent content engine and a clean conversion path from Instagram and TikTok to the website.
+            </p>
+          </motion.div>
 
-              <div className="grid md:grid-cols-2 gap-6 mb-16">
-                {[
-                  "Continuous Webflow/Shopify Optimization",
-                  "Dynamic Hair Quiz Management",
-                  "Weekly AI-Enhanced Product Photography",
-                  "5 High-Converting 'Curl Talk' Videos / Week",
-                  "Monthly Algorithmic Intelligence Reporting",
-                  "Direct Portal Access for Asset Delivery"
-                ].map((item, i) => (
-                  <motion.div 
-                    key={i} 
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.1 }}
-                    className="flex items-start gap-4 bg-white/5 p-4 rounded-2xl border border-white/5"
-                  >
-                    <CheckCircle2 className="text-secondary shrink-0 mt-0.5" size={20} />
-                    <span className="text-white/80 font-light">{item}</span>
-                  </motion.div>
-                ))}
-              </div>
+          {/* Partnership Objectives */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16"
+          >
+            <h3 className="font-heading text-2xl font-bold text-secondary mb-6 uppercase tracking-wider">Partnership Objectives</h3>
+            <ul className="space-y-4">
+              {[
+                "Launch a branded e-commerce presence for Magic Coils on Shopify or a similar e-commerce platform.",
+                "Build daily visibility and product awareness across Instagram and TikTok.",
+                "Create premium static and short-form video content that can also support the website.",
+                "Funnel social attention toward website visits, product discovery, and purchases.",
+                "Strengthen digital infrastructure through SEO, analytics, email support, and commerce platform setup."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-4">
+                  <CheckCircle2 className="text-secondary shrink-0 mt-1" size={20} />
+                  <span className="text-white/80 leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
 
-              <div className="flex justify-center">
-                <button className="group relative w-full md:w-auto bg-white text-black px-16 py-6 rounded-full text-xl font-bold overflow-hidden transition-transform hover:scale-105">
-                  <div className="absolute inset-0 bg-gradient-to-r from-secondary to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <span className="relative z-10 group-hover:text-black transition-colors flex items-center justify-center gap-3">
-                    Initiate Partnership <ArrowRight size={24} />
-                  </span>
-                </button>
+          {/* Service Structure / Pricing Cards */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-20"
+          >
+            <h3 className="font-heading text-2xl font-bold text-secondary mb-8 uppercase tracking-wider">Service Structure</h3>
+            <div className="grid md:grid-cols-2 gap-6">
+              <div className="relative p-8 rounded-2xl bg-white/5 border border-secondary/30 backdrop-blur-sm">
+                <div className="absolute top-6 right-6 text-secondary font-heading text-3xl font-bold">$500</div>
+                <h4 className="font-heading text-xl font-bold text-white mb-2">One-Time Setup</h4>
+                <p className="text-white/70 text-sm leading-relaxed">Website build, shop setup, launch-ready e-commerce structure, and digital foundation.</p>
+              </div>
+              <div className="relative p-8 rounded-2xl bg-tertiary/20 border border-tertiary/40 backdrop-blur-sm">
+                <div className="absolute top-6 right-6 text-secondary font-heading text-3xl font-bold">$1,000 <span className="text-lg font-normal text-white/60">/mo</span></div>
+                <h4 className="font-heading text-xl font-bold text-white mb-2">Monthly Growth Partnership</h4>
+                <p className="text-white/70 text-sm leading-relaxed">Daily content creation and posting, social management, website support, SEO, analytics, and digital growth strategy.</p>
               </div>
             </div>
           </motion.div>
+
+          {/* 1. Website Build & Shop Setup */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16"
+          >
+            <h3 className="font-heading text-2xl font-bold text-white mb-4">1. Website Build & Shop Setup</h3>
+            <p className="text-white/80 leading-relaxed mb-6">
+              Couture House will design and launch a branded e-commerce website for Magic Coils on Shopify or a similar e-commerce platform. The objective is to create a clean, premium, conversion-ready storefront that supports both consumer purchases and long-term brand growth.
+            </p>
+            <h4 className="text-white/90 font-semibold mb-3">Included in the one-time setup</h4>
+            <ul className="space-y-2 mb-6">
+              {[
+                "Branded website design aligned with the Magic Coils visual identity.",
+                "E-commerce shop setup with foundational product catalog structure.",
+                "Product page framework and collection organization.",
+                "Payment integration and mobile-responsive layout.",
+                "Core pages such as Home, Shop, About, Contact, and supporting brand pages.",
+                "Foundational setup for blog, hair quiz, and stylist directory features, to be expanded as product and content details are finalized.",
+                "Basic on-page SEO setup and analytics installation.",
+                "Foundational TikTok Shop and Instagram Shop coordination where platform eligibility and catalog details are available."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-white/80">
+                  <span className="text-secondary mt-1">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="p-4 rounded-xl bg-secondary/10 border border-secondary/30">
+              <p className="text-secondary font-bold text-sm uppercase tracking-wider mb-2">Important launch note</p>
+              <p className="text-white/80 text-sm leading-relaxed">
+                Because final product names, SKUs, pricing, and launch details are still being finalized, this portion of the proposal covers the platform build and launch foundation. The final product catalog and any advanced merchandising details will be completed during onboarding as the client finalizes inventory and launch information.
+              </p>
+            </div>
+          </motion.div>
+
+          {/* 2. Monthly Brand Growth Partnership */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16"
+          >
+            <h3 className="font-heading text-2xl font-bold text-white mb-4">2. Monthly Brand Growth Partnership</h3>
+            <p className="text-white/80 leading-relaxed mb-8">For a monthly investment of $1,000, Couture House will provide ongoing creative, social, website, and digital growth support to help Magic Coils build brand awareness and convert attention into sales.</p>
+            
+            <div className="space-y-8">
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">A. Daily content creation and publishing</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Daily content delivery and posting cadence across Instagram and TikTok.",
+                    "Creation of static creatives and short-form video content.",
+                    "Product-focused content, campaign-style promotional content, educational content, and lifestyle or brand storytelling content.",
+                    "Content can be repurposed for website use where appropriate.",
+                    "Creative collaboration is welcomed if the client requests specific content concepts or campaign directions.",
+                    "Content production may use newly created assets from Couture House as well as product footage, founder footage, and supporting content shared by the client."
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/80">
+                      <span className="text-secondary mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">B. Instagram and TikTok management</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Management of both social platforms.",
+                    "Strategic posting to increase awareness, engagement, and brand recognition.",
+                    "Organic social strategy focused on directing traffic toward the website and product discovery.",
+                    "Routine platform monitoring and account support."
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/80">
+                      <span className="text-secondary mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">C. Website support and maintenance</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Ongoing website maintenance.",
+                    "Ongoing website update support.",
+                    "Use of social content and approved brand assets to support site freshness.",
+                    "Monitoring of key website performance indicators."
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/80">
+                      <span className="text-secondary mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">D. Digital growth strategy</h4>
+                <ul className="space-y-2">
+                  {[
+                    "SEO strategy and ongoing SEO support for the website.",
+                    "Monitoring of website analytics and social performance data.",
+                    "Email marketing support, including list growth opportunities and foundational website capture points.",
+                    "Support with digital tools that improve business productivity and product visibility.",
+                    "Google Business Profile and review strategy support where relevant to the brand's SEO and trust-building goals."
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/80">
+                      <span className="text-secondary mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* What is not included */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16 p-6 rounded-2xl bg-white/5 border border-white/10"
+          >
+            <h4 className="text-white font-bold uppercase tracking-wider mb-4">What is not included</h4>
+            <ul className="space-y-2">
+              {[
+                "Paid advertising management or media spend.",
+                "Product fulfillment, shipping, returns, or customer service.",
+                "Final inventory decisions, product manufacturing, or packaging production."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-white/60">
+                  <span className="text-white/40 mt-1">•</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+
+          {/* How the growth system works */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16"
+          >
+            <h4 className="text-secondary font-bold uppercase tracking-wider mb-6">How the growth system works</h4>
+            <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4 text-sm md:text-base">
+              <span className="px-4 py-2 rounded-full bg-tertiary/30 text-white font-medium">Content</span>
+              <ArrowRight className="text-secondary shrink-0" size={20} />
+              <span className="px-4 py-2 rounded-full bg-tertiary/30 text-white font-medium">Awareness</span>
+              <ArrowRight className="text-secondary shrink-0" size={20} />
+              <span className="px-4 py-2 rounded-full bg-tertiary/30 text-white font-medium">Website Visit</span>
+              <ArrowRight className="text-secondary shrink-0" size={20} />
+              <span className="px-4 py-2 rounded-full bg-tertiary/30 text-white font-medium">Product Discovery</span>
+              <ArrowRight className="text-secondary shrink-0" size={20} />
+              <span className="px-4 py-2 rounded-full bg-secondary/30 text-secondary font-bold">Purchase & Reviews</span>
+            </div>
+            <p className="text-white/60 text-center mt-6 text-sm leading-relaxed max-w-2xl mx-auto">
+              The monthly partnership is designed to support the full customer journey: attract attention with high-quality content, guide users to the website, improve product discovery, and strengthen the foundation for repeat purchases and reviews.
+            </p>
+          </motion.div>
+
+          {/* Collaboration, Term & Investment */}
+          <motion.div 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="mb-16"
+          >
+            <h3 className="font-heading text-2xl font-bold text-white mb-6">Collaboration, Term & Investment</h3>
+            
+            <div className="space-y-6 mb-10">
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">Collaboration expectations</h4>
+                <ul className="space-y-2">
+                  {[
+                    "Hair For You / Magic Coils will retain responsibility for order fulfillment, shipping, customer service, and final product information.",
+                    "Antwun and the Magic Coils team may share product information, media assets, campaign ideas, and feedback to support content creation and website growth.",
+                    "Couture House will provide the creative and digital support outlined in this proposal and collaborate with the client on content suggestions and brand direction."
+                  ].map((item, i) => (
+                    <li key={i} className="flex items-start gap-3 text-white/80">
+                      <span className="text-secondary mt-1">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">Term</h4>
+                <p className="text-white/80 leading-relaxed">This partnership is structured with a 3-month initial term, followed by month-to-month continuation thereafter. This provides enough time to implement the platform, establish the content rhythm, and evaluate the early impact of the partnership.</p>
+              </div>
+
+              <div>
+                <h4 className="text-secondary font-bold uppercase tracking-wider mb-3">Reporting</h4>
+                <p className="text-white/80 leading-relaxed">Couture House will provide a monthly performance review covering social activity, top-performing content, website traffic observations, and growth opportunities for the next cycle.</p>
+              </div>
+            </div>
+
+            {/* Investment Summary Table */}
+            <div className="overflow-hidden rounded-2xl border border-white/10 mb-8">
+              <div className="bg-tertiary/30 px-6 py-4">
+                <h4 className="font-heading text-lg font-bold text-white">Investment Summary</h4>
+              </div>
+              <div className="divide-y divide-white/10">
+                <div className="flex justify-between items-center px-6 py-4 bg-white/5">
+                  <span className="text-white/80">Website build & shop setup (one-time)</span>
+                  <span className="text-secondary font-bold">$500</span>
+                </div>
+                <div className="flex justify-between items-center px-6 py-4 bg-white/5">
+                  <span className="text-white/80">Monthly brand growth partnership</span>
+                  <span className="text-secondary font-bold">$1,000</span>
+                </div>
+                <div className="flex justify-between items-center px-6 py-4 bg-white/5">
+                  <span className="text-white/60">Paid media buying / ad spend</span>
+                  <span className="text-white/40 text-sm">Not included</span>
+                </div>
+              </div>
+            </div>
+
+            <p className="text-white/50 text-sm mb-8">This proposal is valid for 7 days from the date presented.</p>
+
+            <h4 className="text-secondary font-bold uppercase tracking-wider mb-4">Next steps</h4>
+            <ul className="space-y-2 mb-8">
+              {[
+                "Approve the proposal and confirm the partnership start date.",
+                "Complete onboarding for website platform access, brand assets, and product information.",
+                "Finalize launch priorities for the website, product catalog, and social content workflow."
+              ].map((item, i) => (
+                <li key={i} className="flex items-start gap-3 text-white/80">
+                  <CheckCircle2 className="text-secondary shrink-0 mt-0.5" size={18} />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+
+            <p className="text-white/70 leading-relaxed mb-12 italic">
+              Couture House appreciates the opportunity to support the launch and growth of Magic Coils and looks forward to helping build a premium digital presence that supports both product sales and long-term brand credibility.
+            </p>
+
+            <div className="text-center">
+              <button className="group relative w-full md:w-auto bg-white text-black px-16 py-6 rounded-full text-xl font-bold overflow-hidden transition-transform hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-r from-secondary to-yellow-400 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <span className="relative z-10 group-hover:text-black transition-colors flex items-center justify-center gap-3">
+                  Initiate Partnership <ArrowRight size={24} />
+                </span>
+              </button>
+            </div>
+          </motion.div>
+
+          <motion.p 
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeUpVariant}
+            className="text-center text-white/40 text-sm italic"
+          >
+            Couture House appreciates the opportunity to support the launch and growth of Magic Coils and looks forward to helping build a premium digital presence that supports both product sales and long-term brand credibility.
+          </motion.p>
         </div>
       </section>
 
