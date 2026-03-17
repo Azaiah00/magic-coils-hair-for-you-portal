@@ -10,3 +10,27 @@ body {
   background-color: #FFFFFF;
   color: #002366;
 }
+
+/* Custom scrollbar: black track, gold thumb */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #D4AF37 #000000;
+}
+
+*::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background: #000000;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #D4AF37;
+  border-radius: 5px;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #c4a02d;
+}
