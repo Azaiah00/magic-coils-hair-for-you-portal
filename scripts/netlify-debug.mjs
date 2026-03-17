@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 
 const runId = process.env.NETLIFY ? "netlify-build" : "local-build";
 const pkg = JSON.parse(readFileSync(new URL("../package.json", import.meta.url), "utf8"));
@@ -9,6 +9,8 @@ const lockEslintNextVersion =
   lock?.packages?.["node_modules/eslint-config-next"]?.version ??
   lock?.dependencies?.["eslint-config-next"]?.version ??
   null;
+const hasFaviconIco = existsSync(new URL("../src/app/favicon.ico", import.meta.url));
+const hasIconPng = existsSync(new URL("../src/app/icon.png", import.meta.url));
 
 // #region agent log
 fetch("http://127.0.0.1:7543/ingest/16c75c26-59a4-4616-96a0-5d5b149b80d5",{method:"POST",headers:{"Content-Type":"application/json","X-Debug-Session-Id":"1fddd6"},body:JSON.stringify({sessionId:"1fddd6",runId,hypothesisId:"H1",location:"scripts/netlify-debug.mjs:14",message:"package.json dependency versions",data:{next:pkg?.dependencies?.next??null,eslintConfigNext:pkg?.devDependencies?.["eslint-config-next"]??null},timestamp:Date.now()})}).catch(()=>{});
@@ -20,4 +22,8 @@ fetch("http://127.0.0.1:7543/ingest/16c75c26-59a4-4616-96a0-5d5b149b80d5",{metho
 
 // #region agent log
 fetch("http://127.0.0.1:7543/ingest/16c75c26-59a4-4616-96a0-5d5b149b80d5",{method:"POST",headers:{"Content-Type":"application/json","X-Debug-Session-Id":"1fddd6"},body:JSON.stringify({sessionId:"1fddd6",runId,hypothesisId:"H3",location:"scripts/netlify-debug.mjs:22",message:"build environment snapshot",data:{node:process.version,netlify:Boolean(process.env.NETLIFY),ci:Boolean(process.env.CI),npmLifecycle:process.env.npm_lifecycle_event??null},timestamp:Date.now()})}).catch(()=>{});
+// #endregion
+
+// #region agent log
+fetch("http://127.0.0.1:7543/ingest/16c75c26-59a4-4616-96a0-5d5b149b80d5",{method:"POST",headers:{"Content-Type":"application/json","X-Debug-Session-Id":"1fddd6"},body:JSON.stringify({sessionId:"1fddd6",runId,hypothesisId:"H4",location:"scripts/netlify-debug.mjs:27",message:"icon assets existence",data:{faviconIco:hasFaviconIco,iconPng:hasIconPng},timestamp:Date.now()})}).catch(()=>{});
 // #endregion
