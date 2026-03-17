@@ -1,0 +1,9 @@
+# Netlify build config for Next.js
+# See: https://docs.netlify.com/frameworks/next-js/
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[build.environment]
+  NODE_VERSION = "20"
