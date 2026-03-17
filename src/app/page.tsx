@@ -8,7 +8,7 @@ import { useRef } from "react";
 // --- Animation Variants ---
 const fadeUpVariant = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" as const } },
 };
 
 const staggerContainer = {
@@ -24,7 +24,7 @@ const pulseGlow = {
   animate: { 
     opacity: [0.5, 0.8, 0.5], 
     scale: [1, 1.05, 1],
-    transition: { duration: 4, repeat: Infinity, ease: "easeInOut" } 
+    transition: { duration: 4, repeat: Infinity, ease: "easeInOut" as const } 
   }
 };
 
