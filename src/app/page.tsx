@@ -339,7 +339,8 @@ export default function Home() {
                 title: "E-Commerce Architecture",
                 desc: "Focus on building a frictionless, luxury web experience with a dynamic hair quiz to increase average order value. Tailored product recommendations convert casual browsers into loyal subscribers.",
                 align: "left",
-                img: "/assets/ecommerce-preview.png"
+                img: "/assets/ecommerce-preview.png",
+                link: "https://magiccoils-mock-up-site.netlify.app/"
               },
               {
                 title: "The 'Curl Talk' Growth Engine",
@@ -364,15 +365,32 @@ export default function Home() {
               >
                 <div className="w-full md:w-1/2 relative group">
                   <div className="absolute inset-0 bg-gradient-to-tr from-secondary/40 to-tertiary/40 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-50" />
-                  <div className="relative aspect-[4/3] bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
-                    <Image 
-                      src={feature.img}
-                      alt={feature.title}
-                      fill
-                      className="object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                  </div>
+                  {feature.link ? (
+                    <a href={feature.link} target="_blank" rel="noopener noreferrer" className="relative block aspect-[4/3] bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden cursor-pointer">
+                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
+                      <Image 
+                        src={feature.img}
+                        alt={feature.title}
+                        fill
+                        className="object-cover object-top transition-transform duration-700 group-hover:scale-105"
+                      />
+                      <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20 flex items-center justify-center">
+                        <span className="bg-secondary text-black px-6 py-3 rounded-full font-bold text-sm shadow-xl flex items-center gap-2">
+                          View Mock-Up <ArrowRight size={16} />
+                        </span>
+                      </div>
+                    </a>
+                  ) : (
+                    <div className="relative aspect-[4/3] bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden">
+                      <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
+                      <Image 
+                        src={feature.img}
+                        alt={feature.title}
+                        fill
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                      />
+                    </div>
+                  )}
                 </div>
                 <div className="w-full md:w-1/2">
                   <div className="text-secondary font-bold text-4xl sm:text-6xl opacity-20 mb-4 font-heading">0{i + 1}</div>
