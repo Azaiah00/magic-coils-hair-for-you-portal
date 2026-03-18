@@ -4,11 +4,13 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   background-color: #FFFFFF;
   color: #002366;
+  overflow-x: hidden;
 }
 
 /* Custom scrollbar: black track, gold thumb */
