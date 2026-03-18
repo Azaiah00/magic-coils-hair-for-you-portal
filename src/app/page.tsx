@@ -1,9 +1,9 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { Lock, CheckCircle2, Sparkles, ArrowRight } from "lucide-react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
+import { Lock, CheckCircle2, Sparkles, ArrowRight, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 // --- Animation Variants ---
 const fadeUpVariant = {
@@ -28,12 +28,102 @@ const pulseGlow = {
   }
 };
 
+const allGalleryImages = [
+  "/assets/img4.png",
+  "/assets/img5.png",
+  "/assets/img6.png",
+  "/assets/img7.png",
+  "/assets/img8.png",
+  "/assets/img9.png",
+  "/assets/new1.png",
+  "/assets/new2.png",
+  "/assets/new3.png",
+  "/assets/new4.png",
+  "/assets/new5.png",
+  "/assets/new6.png",
+  "/assets/new7.png",
+];
+
+// Divide images into 5 groups for the 5 windows
+const windowGroups = [
+  [allGalleryImages[0], allGalleryImages[5], allGalleryImages[10]],
+  [allGalleryImages[1], allGalleryImages[6], allGalleryImages[11]],
+  [allGalleryImages[2], allGalleryImages[7], allGalleryImages[12]],
+  [allGalleryImages[3], allGalleryImages[8], allGalleryImages[0]],
+  [allGalleryImages[4], allGalleryImages[9], allGalleryImages[1]],
+];
+
+function AutoRotatingWindow({ images, span, delayOffset, onClick }: { images: string[], span: string, delayOffset: number, onClick: (img: string) => void }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setCurrentIndex((prev) => (prev + 1) % images.length);
+      }, 4000);
+      return () => clearInterval(interval);
+    }, delayOffset);
+    return () => clearTimeout(timer);
+  }, [images.length, delayOffset]);
+
+  return (
+    <motion.div 
+      initial={{ opacity: 0, scale: 0.9 }}
+      whileInView={{ opacity: 1, scale: 1 }}
+      viewport={{ once: true }}
+      whileHover={{ scale: 0.98 }}
+      onClick={() => onClick(images[currentIndex])}
+      className={`${span} relative bg-white/5 rounded-2xl border border-white/10 overflow-hidden group cursor-pointer`}
+    >
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={currentIndex}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1 }}
+          className="absolute inset-0"
+        >
+          <Image 
+            src={images[currentIndex]}
+            alt="Gallery Image"
+            fill
+            className="object-cover"
+          />
+        </motion.div>
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10" />
+    </motion.div>
+  );
+}
+
 export default function Home() {
   const containerRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end end"]
   });
+
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
+
+  const openLightbox = (imgSrc: string) => {
+    const index = allGalleryImages.indexOf(imgSrc);
+    setLightboxIndex(index !== -1 ? index : 0);
+  };
+
+  const nextImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex + 1) % allGalleryImages.length);
+    }
+  };
+
+  const prevImage = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (lightboxIndex !== null) {
+      setLightboxIndex((lightboxIndex - 1 + allGalleryImages.length) % allGalleryImages.length);
+    }
+  };
 
   const yHero = useTransform(scrollYProgress, [0, 0.2], [0, 200]);
   const opacityHero = useTransform(scrollYProgress, [0, 0.15], [1, 0]);
@@ -312,36 +402,11 @@ export default function Home() {
           </motion.div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] sm:auto-rows-[250px]">
-            {[
-              { span: "sm:col-span-2 sm:row-span-2", label: "Full Product Lineup Lifestyle", img: "/assets/img8.png" },
-              { span: "sm:col-span-2 md:col-span-2", label: "Product Texture Close-up", img: "/assets/img5.png" },
-              { span: "sm:col-span-1 md:col-span-1", label: "Stylist Action", img: "/assets/img6.png" },
-              { span: "sm:col-span-1 md:col-span-1", label: "Before/After", img: "/assets/img7.png" },
-              { span: "sm:col-span-2 md:col-span-4", label: "Hero Campaign Shot", img: "/assets/img4.png" },
-            ].map((item, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, scale: 0.9 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1, duration: 0.6 }}
-                whileHover={{ scale: 0.98 }}
-                className={`${item.span} relative bg-white/5 rounded-2xl border border-white/10 overflow-hidden group cursor-pointer`}
-              >
-                <Image 
-                  src={item.img}
-                  alt={item.label}
-                  fill
-                  className="object-cover transition-transform duration-700 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute inset-0 flex items-end justify-center pb-6">
-                  <span className="text-white/80 font-medium tracking-widest uppercase text-xs sm:text-sm group-hover:text-white transition-colors duration-300 z-20 relative translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
-                    {item.label}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
+            <AutoRotatingWindow images={windowGroups[0]} span="sm:col-span-2 sm:row-span-2" delayOffset={0} onClick={openLightbox} />
+            <AutoRotatingWindow images={windowGroups[1]} span="sm:col-span-2 md:col-span-2" delayOffset={1000} onClick={openLightbox} />
+            <AutoRotatingWindow images={windowGroups[2]} span="sm:col-span-1 md:col-span-1" delayOffset={2000} onClick={openLightbox} />
+            <AutoRotatingWindow images={windowGroups[3]} span="sm:col-span-1 md:col-span-1" delayOffset={3000} onClick={openLightbox} />
+            <AutoRotatingWindow images={windowGroups[4]} span="sm:col-span-2 md:col-span-4" delayOffset={1500} onClick={openLightbox} />
           </div>
         </div>
       </section>
@@ -712,6 +777,62 @@ export default function Home() {
           © 2026 Couture House Co. | Confidential Service Blueprint
         </p>
       </footer>
+
+      {/* Lightbox Overlay */}
+      <AnimatePresence>
+        {lightboxIndex !== null && (
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[100] bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 sm:p-8"
+            onClick={() => setLightboxIndex(null)}
+          >
+            <button 
+              className="absolute top-6 right-6 text-white/50 hover:text-white transition-colors z-50 bg-black/20 p-2 rounded-full backdrop-blur-md"
+              onClick={(e) => { e.stopPropagation(); setLightboxIndex(null); }}
+            >
+              <X size={32} />
+            </button>
+
+            <button 
+              className="absolute left-4 sm:left-8 text-white/50 hover:text-white transition-colors z-50 bg-black/20 p-3 rounded-full backdrop-blur-md"
+              onClick={prevImage}
+            >
+              <ChevronLeft size={32} />
+            </button>
+
+            <motion.div 
+              key={lightboxIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.3 }}
+              className="relative w-full max-w-6xl aspect-[4/3] sm:aspect-video"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <Image 
+                src={allGalleryImages[lightboxIndex]}
+                alt="Gallery Preview"
+                fill
+                className="object-contain"
+                quality={100}
+              />
+            </motion.div>
+
+            <button 
+              className="absolute right-4 sm:right-8 text-white/50 hover:text-white transition-colors z-50 bg-black/20 p-3 rounded-full backdrop-blur-md"
+              onClick={nextImage}
+            >
+              <ChevronRight size={32} />
+            </button>
+
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/50 tracking-widest text-sm font-medium">
+              {lightboxIndex + 1} / {allGalleryImages.length}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </main>
   );
 }
