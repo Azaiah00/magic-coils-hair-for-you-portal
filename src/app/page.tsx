@@ -248,17 +248,20 @@ export default function Home() {
               {
                 title: "E-Commerce Architecture",
                 desc: "Focus on building a frictionless, luxury web experience with a dynamic hair quiz to increase average order value. Tailored product recommendations convert casual browsers into loyal subscribers.",
-                align: "left"
+                align: "left",
+                img: "/assets/ecommerce-preview.png"
               },
               {
                 title: "The 'Curl Talk' Growth Engine",
                 desc: "Extracting virality from live stylist tutorials using hook psychology and dynamic subtitling. We turn your in-person expertise into highly shareable TikTok and Instagram assets.",
-                align: "right"
+                align: "right",
+                img: "/assets/img2.png"
               },
               {
                 title: "AI-Driven Campaigns",
                 desc: "Utilizing high-fidelity AI workflows to place Magic Coils in high-fashion, impossible editorial environments. Elevating the brand aesthetic without the cost of massive studio productions.",
-                align: "left"
+                align: "left",
+                img: "/assets/img3.png"
               }
             ].map((feature, i) => (
               <motion.div 
@@ -274,7 +277,7 @@ export default function Home() {
                   <div className="relative aspect-[4/3] bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden">
                     <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
                     <Image 
-                      src={`/assets/img${i + 1}.png`}
+                      src={feature.img}
                       alt={feature.title}
                       fill
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
