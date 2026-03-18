@@ -310,11 +310,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] sm:auto-rows-[250px]">
             {[
-              { span: "sm:col-span-2 sm:row-span-2", label: "Hero Campaign Shot", img: "/assets/img4.png" },
+              { span: "sm:col-span-2 sm:row-span-2", label: "Full Product Lineup Lifestyle", img: "/assets/img8.png" },
               { span: "sm:col-span-2 md:col-span-2", label: "Product Texture Close-up", img: "/assets/img5.png" },
               { span: "sm:col-span-1 md:col-span-1", label: "Stylist Action", img: "/assets/img6.png" },
               { span: "sm:col-span-1 md:col-span-1", label: "Before/After", img: "/assets/img7.png" },
-              { span: "sm:col-span-2 md:col-span-4", label: "Full Product Lineup Lifestyle", img: "/assets/img8.png" },
+              { span: "sm:col-span-2 md:col-span-4", label: "Hero Campaign Shot", img: "/assets/img4.png" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
