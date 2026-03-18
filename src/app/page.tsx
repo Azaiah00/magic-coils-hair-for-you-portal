@@ -272,14 +272,13 @@ export default function Home() {
                 <div className="w-full md:w-1/2 relative group">
                   <div className="absolute inset-0 bg-gradient-to-tr from-secondary/40 to-tertiary/40 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-500 opacity-50" />
                   <div className="relative aspect-[4/3] bg-white/5 backdrop-blur-xl rounded-3xl border border-white/10 flex items-center justify-center overflow-hidden">
-                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay"></div>
-                    <motion.div 
-                      whileHover={{ scale: 1.1 }}
-                      transition={{ duration: 0.5 }}
-                      className="text-white/30 font-heading text-xl sm:text-2xl font-light italic"
-                    >
-                      Visual Asset {i + 1}
-                    </motion.div>
+                    <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/stardust.png')] opacity-20 mix-blend-overlay z-10"></div>
+                    <Image 
+                      src={`/assets/img${i + 1}.png`}
+                      alt={feature.title}
+                      fill
+                      className="object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
                   </div>
                 </div>
                 <div className="w-full md:w-1/2">
@@ -311,11 +310,11 @@ export default function Home() {
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 auto-rows-[200px] sm:auto-rows-[250px]">
             {[
-              { span: "sm:col-span-2 sm:row-span-2", label: "Hero Campaign Shot" },
-              { span: "sm:col-span-2 md:col-span-2", label: "Product Texture Close-up" },
-              { span: "sm:col-span-1 md:col-span-1", label: "Stylist Action" },
-              { span: "sm:col-span-1 md:col-span-1", label: "Before/After" },
-              { span: "sm:col-span-2 md:col-span-4", label: "Full Product Lineup Lifestyle" },
+              { span: "sm:col-span-2 sm:row-span-2", label: "Hero Campaign Shot", img: "/assets/img4.png" },
+              { span: "sm:col-span-2 md:col-span-2", label: "Product Texture Close-up", img: "/assets/img5.png" },
+              { span: "sm:col-span-1 md:col-span-1", label: "Stylist Action", img: "/assets/img6.png" },
+              { span: "sm:col-span-1 md:col-span-1", label: "Before/After", img: "/assets/img7.png" },
+              { span: "sm:col-span-2 md:col-span-4", label: "Full Product Lineup Lifestyle", img: "/assets/img8.png" },
             ].map((item, i) => (
               <motion.div 
                 key={i}
@@ -326,9 +325,15 @@ export default function Home() {
                 whileHover={{ scale: 0.98 }}
                 className={`${item.span} relative bg-white/5 rounded-2xl border border-white/10 overflow-hidden group cursor-pointer`}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-white/20 font-medium tracking-widest uppercase text-xs sm:text-sm group-hover:text-white/90 transition-colors duration-300 z-20 relative">
+                <Image 
+                  src={item.img}
+                  alt={item.label}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-60 group-hover:opacity-100 transition-opacity duration-300 z-10" />
+                <div className="absolute inset-0 flex items-end justify-center pb-6">
+                  <span className="text-white/80 font-medium tracking-widest uppercase text-xs sm:text-sm group-hover:text-white transition-colors duration-300 z-20 relative translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100">
                     {item.label}
                   </span>
                 </div>
