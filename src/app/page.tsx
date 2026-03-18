@@ -339,7 +339,7 @@ export default function Home() {
                 title: "E-Commerce Architecture",
                 desc: "Focus on building a frictionless, luxury web experience with a dynamic hair quiz to increase average order value. Tailored product recommendations convert casual browsers into loyal subscribers.",
                 align: "left",
-                img: "/assets/ecommerce-preview.png",
+                img: "/assets/ecommerce-preview-new.png",
                 link: "https://magiccoils-mock-up-site.netlify.app/"
               },
               {
